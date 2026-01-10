@@ -1,10 +1,8 @@
-import { Header } from "./components/Header"
+import { MainRouter } from "./routers/MainRouter"
 
 function App() {
   return (
-    <>
-     <Header />
-    </>
+    <MainRouter />
   )
 }
 
