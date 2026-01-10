@@ -1,5 +1,6 @@
 import { FileText, Type } from "lucide-react";
 import { UploadPDFDetectorIA } from "../UploadPDFDetectorIA";
+import { TextDetectorIA } from "../TextDetectorIA";
 
 export function TabPick() {
   return (
@@ -26,8 +27,9 @@ export function TabPick() {
       </ul>
 
       {/* CONTEÚDO PDF */}
-      <UploadPDFDetectorIA />
-      
+      {/* <UploadPDFDetectorIA /> */}
+      <TextDetectorIA />
+
       {/* CONTEÚDO TEXTO */}
       <div id="textContent" className="tab-content max-w-2xl hidden mt-8">
         <h4 className="text-base font-semibold text-slate-600">Análise de Texto</h4>
