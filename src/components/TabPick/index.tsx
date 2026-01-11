@@ -61,6 +61,16 @@ export function TabPick() {
     <div className="p-4 space-y-6">
       {/* Tabs */}
       <ul className="flex max-sm:flex-col gap-x-2 gap-y-4 w-max rounded-lg">
+         {/* Texto */}
+        <li
+          onClick={() => setActiveTab("text")}
+          className={`${tabBase} ${
+            activeTab === "text" ? tabActive : tabInactive
+          }`}
+        >
+          <Type className="w-5 h-5 mb-3" />
+          Texto
+        </li>
 
         {/* Imagem */}
         <li
@@ -71,17 +81,6 @@ export function TabPick() {
         >
           <Image className="w-5 h-5 mb-3" />
           Imagem
-        </li>
-
-        {/* Texto */}
-        <li
-          onClick={() => setActiveTab("text")}
-          className={`${tabBase} ${
-            activeTab === "text" ? tabActive : tabInactive
-          }`}
-        >
-          <Type className="w-5 h-5 mb-3" />
-          Texto
         </li>
 
         {/* PDF */}
