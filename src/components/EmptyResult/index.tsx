@@ -2,7 +2,7 @@ import { FileSearch } from "lucide-react";
 
 export function EmptyResult() {
   return (
-    <div className="flex flex-col items-center justify-center text-center py-24 space-y-4">
+    <div className="flex flex-col items-center h-screen justify-center text-center py-24 space-y-4">
 
       <div className="p-4 rounded-full bg-slate-800">
         <FileSearch className="w-8 h-8 text-primary" />
