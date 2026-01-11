@@ -20,7 +20,7 @@ export function ImageDetectorIA() {
           </p>
 
           <button
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-medium hover:opacity-90 transition"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-medium hover:opacity-90 transition cursor-pointer"
           >
             <Upload className="w-5 h-5" />
             Selecionar imagem
