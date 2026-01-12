@@ -10,12 +10,12 @@ export function UploadArcchiveDetectorIA() {
           <div className="flex items-center gap-3">
             <Sparkles className="w-6 h-6 text-primary" />
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
-              Detectar IA em PDF
+              Detectar IA em Arquivo
             </h2>
           </div>
 
           <p className="text-slate-600 dark:text-slate-400 max-w-md">
-            Anexe um arquivo PDF para analisar se o conteúdo foi gerado por
+            Anexe um arquivo para analisar se o conteúdo foi gerado por
             inteligência artificial.
           </p>
 

@@ -4,10 +4,10 @@ import { TextDetectorIA } from "../TextDetectorIA";
 import { ImageDetectorIA } from "../ImageDetectorIA";
 import { UploadArcchiveDetectorIA } from "../UploadArchiveDetectorIA";
 
-type TabType = "pdf" | "text" | "image";
+type TabType = "archive" | "text" | "image";
 
 export function TabPick() {
-  const [activeTab, setActiveTab] = useState<TabType>("pdf");
+  const [activeTab, setActiveTab] = useState<TabType>("text");
 
   const tabBase =
     "flex flex-col justify-center items-center border-2 rounded-lg bg-gray-100 text-sm py-4 px-4 min-w-[120px] cursor-pointer transition-all";
@@ -46,9 +46,9 @@ export function TabPick() {
 
         {/* PDF */}
         <li
-          onClick={() => setActiveTab("pdf")}
+          onClick={() => setActiveTab("archive")}
           className={`${tabBase} ${
-            activeTab === "pdf" ? tabActive : tabInactive
+            activeTab === "archive" ? tabActive : tabInactive
           }`}
         >
           <FileText className="w-5 h-5 mb-3" />
@@ -58,7 +58,7 @@ export function TabPick() {
 
       {/* Conteúdo */}
       <div>
-        {activeTab === "pdf" && <UploadArcchiveDetectorIA />}
+        {activeTab === "archive" && <UploadArcchiveDetectorIA />}
         {activeTab === "text" && <TextDetectorIA />}
         {activeTab === "image" && <ImageDetectorIA />}
       </div>

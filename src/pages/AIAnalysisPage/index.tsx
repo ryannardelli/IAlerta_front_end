@@ -1,222 +1,126 @@
-// export default function AIAnalysisPage() {
-//   // Dados mockados
-//   const result = {
-//     likelihood: "AI-generated",
-//     reasoning: "Overall AI score: 77.2%",
-//     confidence: 0.772,
-//     patterns: ["AI patterns detected", "Perfect grammar", "Long, structured sentences"],
-//     sentences: [
-//       { text: "É de extrema importância compreender que...", score: 0.75 },
-//       { text: "Ademais, é fundamental reconhecer que...", score: 0.80 },
-//     ],
-//   };
-
-//   return (
-//     <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-4">
-//       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-xl p-8">
-//         {/* Header */}
-//         <div className="flex flex-col items-center mb-6">
-//           <h1 className="text-3xl font-bold text-gray-800 mb-2">
-//             Análise de Conteúdo
-//           </h1>
-//           <span
-//             className={`px-4 py-1 rounded-full text-sm font-semibold ${
-//               result.likelihood === "AI-generated"
-//                 ? "bg-red-100 text-red-700"
-//                 : "bg-green-100 text-green-700"
-//             }`}
-//           >
-//             {result.likelihood}
-//           </span>
-//           <p className="mt-2 text-gray-500">{result.reasoning}</p>
-//         </div>
-
-//         {/* Barra de progresso */}
-//         <div className="mb-6">
-//           <p className="text-gray-700 font-medium mb-1">Confiança: {(result.confidence * 100).toFixed(1)}%</p>
-//           <div className="w-full bg-gray-200 rounded-full h-4">
-//             <div
-//               className="bg-red-500 h-4 rounded-full transition-all duration-500"
-//               style={{ width: `${result.confidence * 100}%` }}
-//             ></div>
-//           </div>
-//         </div>
-
-//         {/* Padrões detectados */}
-//         <div className="mb-6">
-//           <h2 className="text-lg font-semibold text-gray-800 mb-2">Padrões detectados:</h2>
-//           <ul className="flex flex-wrap gap-2">
-//             {result.patterns.map((pattern, idx) => (
-//               <li
-//                 key={idx}
-//                 className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
-//               >
-//                 {pattern}
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-
-//         {/* Detalhes frase a frase */}
-//         <div>
-//           <h2 className="text-lg font-semibold text-gray-800 mb-2">
-//             Análise por frase
-//           </h2>
-//           <div className="space-y-4">
-//             {result.sentences.map((sentence, idx) => (
-//               <div
-//                 key={idx}
-//                 className="bg-gray-50 p-4 rounded-lg border border-gray-200"
-//               >
-//                 <p className="text-gray-800 mb-1">{sentence.text}</p>
-//                 <div className="w-full bg-gray-200 rounded-full h-2">
-//                   <div
-//                     className="bg-red-400 h-2 rounded-full"
-//                     style={{ width: `${sentence.score * 100}%` }}
-//                   ></div>
-//                 </div>
-//                 <p className="text-sm text-gray-500 mt-1">
-//                   Chance de IA: {(sentence.score * 100).toFixed(1)}%
-//                 </p>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-
-//         {/* Botão voltar */}
-//         <div className="mt-8 flex justify-center">
-//           <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition cursor-pointer">
-//             Voltar
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { useAnalysis } from "../../hooks/useAnalysis";
 import { EmptyResult } from "../../components/EmptyResult";
 
 export default function AIAnalysisPage() {
-  const { state, dispatch } = useAnalysis();
+  const { state } = useAnalysis();
+  const navigate = useNavigate();
+
   const result = state.result;
 
-  // Mock apenas para desenvolvimento
   useEffect(() => {
-    dispatch({
-      type: "SET_RESULT",
-      payload: {
-        likelihood: "AI-generated",
-        reasoning: "Probabilidade geral de IA: 77,2%",
-        confidence: 0.772,
-        patterns: [
-          "Padrões típicos de IA",
-          "Gramática perfeita",
-          "Frases longas e estruturadas",
-        ],
-        sentences: [
-          { text: "É de extrema importância compreender que...", score: 0.75 },
-          { text: "Ademais, é fundamental reconhecer que...", score: 0.8 },
-        ],
-      },
-    });
-  }, [dispatch]);
+    if (!result) {
+      navigate("/");
+    }
+  }, [result, navigate]);
 
-  /* ---------- Empty State ---------- */
   if (!result) {
-    return (
-      <EmptyResult />
-    );
+    return <EmptyResult />;
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-4">
-      <div className="w-full max-w-4xl bg-white rounded-2xl shadow-xl p-8">
+  const isAI = result.likelihood === "AI-generated";
+  const confidencePercent = (result.confidence * 100).toFixed(1);
 
-        {/* Header */}
-        <div className="flex flex-col items-center mb-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            Análise de Conteúdo
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4">
+      <div className="w-full max-w-3xl bg-white rounded-3xl shadow-2xl p-8 md:p-10">
+
+        {/* ---------- Header ---------- */}
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-bold text-gray-800">
+            Resultado da Análise
           </h1>
 
-          <span
-            className={`px-4 py-1 rounded-full text-sm font-semibold ${
-              result.likelihood === "AI-generated"
-                ? "bg-red-100 text-red-700"
-                : "bg-green-100 text-green-700"
-            }`}
-          >
-            {result.likelihood === "AI-generated"
-              ? "Gerado por IA"
-              : "Escrito por humano"}
-          </span>
-
-          <p className="mt-2 text-gray-500">{result.reasoning}</p>
+          <p className="text-gray-500 mt-2">
+            Detecção de autoria por Inteligência Artificial
+          </p>
         </div>
 
-        {/* Confiança */}
-        <div className="mb-6">
-          <p className="font-medium text-gray-700 mb-1">
-            Confiança: {(result.confidence * 100).toFixed(1)}%
-          </p>
+        <div
+          className={`rounded-2xl p-6 mb-8 border ${
+            isAI
+              ? "bg-red-50 border-red-200"
+              : "bg-green-50 border-green-200"
+          }`}
+        >
+          <div className="flex flex-col items-center text-center">
+            <span
+              className={`text-sm font-semibold px-4 py-1 rounded-full mb-3 ${
+                isAI
+                  ? "bg-red-100 text-red-700"
+                  : "bg-green-100 text-green-700"
+              }`}
+            >
+              {isAI ? "Conteúdo gerado por IA" : "Conteúdo provavelmente humano"}
+            </span>
 
-          <div className="w-full bg-gray-200 rounded-full h-4">
+            <p className="text-5xl font-bold text-gray-800">
+              {confidencePercent}%
+            </p>
+
+            <p className="text-gray-500 mt-1">
+              Nível de confiança
+            </p>
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
             <div
-              className="bg-red-500 h-4 rounded-full transition-all"
-              style={{ width: `${result.confidence * 100}%` }}
+              className={`h-4 transition-all ${
+                isAI ? "bg-red-500" : "bg-green-500"
+              }`}
+              style={{ width: `${confidencePercent}%` }}
             />
           </div>
         </div>
 
-        {/* Padrões */}
-        <div className="mb-6">
-          <h2 className="text-lg font-semibold mb-2">Padrões detectados</h2>
-          <ul className="flex flex-wrap gap-2">
-            {result.patterns.map((pattern, idx) => (
-              <li
-                key={idx}
-                className="bg-gray-100 px-3 py-1 rounded-full text-sm"
-              >
-                {pattern}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* ---------- Breakdown ---------- */}
+        <div className="mb-10">
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+            Distribuição de probabilidades
+          </h2>
 
-        {/* Frases */}
-        <div>
-          <h2 className="text-lg font-semibold mb-2">Análise por frase</h2>
           <div className="space-y-4">
-            {result.sentences.map((sentence, idx) => (
-              <div
-                key={idx}
-                className="border border-gray-200 rounded-lg p-4 bg-gray-50"
-              >
-                <p className="mb-1 text-gray-800">{sentence.text}</p>
+            {result.raw.map((item, idx) => {
+              const percent = (item.score * 100).toFixed(1);
 
-                <div className="w-full bg-gray-200 h-2 rounded-full">
-                  <div
-                    className="bg-red-400 h-2 rounded-full"
-                    style={{ width: `${sentence.score * 100}%` }}
-                  />
+              return (
+                <div key={idx}>
+                  <div className="flex justify-between text-sm text-gray-600 mb-1">
+                    <span>{item.label}</span>
+                    <span>{percent}%</span>
+                  </div>
+
+                  <div className="w-full bg-gray-200 h-2 rounded-full">
+                    <div
+                      className={`h-2 rounded-full ${
+                        item.label === "AI-generated"
+                          ? "bg-red-400"
+                          : "bg-green-400"
+                      }`}
+                      style={{ width: `${percent}%` }}
+                    />
+                  </div>
                 </div>
-
-                <p className="text-sm text-gray-500 mt-1">
-                  Chance de IA: {(sentence.score * 100).toFixed(1)}%
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
-        {/* Voltar */}
-        <div className="mt-8 flex justify-center">
+        {/* ---------- Provider ---------- */}
+        <div className="text-center text-sm text-gray-400 mb-10">
+          Análise realizada por <span className="font-medium">{result.provider}</span>
+        </div>
+
+        {/* ---------- CTA ---------- */}
+        <div className="flex justify-center">
           <button
-            onClick={() => dispatch({ type: "CLEAR_RESULT" })}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold cursor-pointer"
+            onClick={() => navigate("/")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition shadow-md"
           >
-            Voltar
+            Nova análise
           </button>
         </div>
       </div>
