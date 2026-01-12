@@ -6,10 +6,12 @@ type MainTemplateProps = {
 
 export default function MainTemplate({ children }: MainTemplateProps) {
   return(
-    <>
+    <section className="min-h-screen flex justify-center items-center flex-col">
       <Header />
 
-      {children}
-    </>
+      <main className="flex-1 flex">
+        {children}
+      </main>
+    </section>
   );
 };

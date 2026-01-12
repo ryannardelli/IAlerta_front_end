@@ -2,7 +2,7 @@ import logo from '../../../public/img/logo.png';
 
 export function Header() {
   return (
-    <header className="fixed top-0 w-full z-50 bg-primary backdrop-blur-md border-b border-secondary">
+    <header className="top-0 w-full z-50 bg-primary backdrop-blur-md border-b border-secondary">
       <div className="flex items-center justify-between px-6 lg:px-8 h-16 max-w-7xl mx-auto">
 
         {/* Logo */}
