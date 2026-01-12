@@ -52,7 +52,7 @@ export function TabPick() {
           }`}
         >
           <FileText className="w-5 h-5 mb-3" />
-          PDF
+          Arquivo
         </li>
       </ul>
 
