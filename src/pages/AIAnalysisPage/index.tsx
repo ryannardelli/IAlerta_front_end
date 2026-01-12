@@ -118,7 +118,7 @@ export default function AIAnalysisPage() {
         <div className="flex justify-center">
           <button
             onClick={() => navigate("/")}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition shadow-md"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition shadow-md cursor-pointer"
           >
             Nova análise
           </button>

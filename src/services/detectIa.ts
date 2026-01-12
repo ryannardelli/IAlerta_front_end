@@ -13,7 +13,7 @@ export async function detectAIContent(text: string) {
     if (!response.ok) {
       const errData = await response.json();
       console.error("Erro na API:", errData);
-      throw new Error("Falha ao detectar conteúdo");
+      throw new Error(errData.message || "Erro inesperado do backend");
     }
 
     const data = await response.json();
