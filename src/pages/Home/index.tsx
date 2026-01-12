@@ -7,6 +7,7 @@ import MainTemplate from "../../templates/MainTemplate";
 export function Home() {
   const {state} = useAnalysis();
   console.log(state);
+  
   return(
     <MainTemplate>
       <ContainerContent className="flex flex-col justify-center items-center w-full">
