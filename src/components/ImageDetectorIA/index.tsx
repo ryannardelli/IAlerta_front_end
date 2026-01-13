@@ -1,10 +1,14 @@
 import { useState, useRef } from "react";
 import { Image as ImageIcon, Upload, XCircle } from "lucide-react";
+import { useAnalysis } from "../../hooks/useAnalysis";
+import { useNavigate } from "react-router";
 
 export function ImageDetectorIA() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const inputRef = useRef(null);
+  const { analyzeImage, state } = useAnalysis();
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
     inputRef.current.click();
@@ -25,29 +29,23 @@ export function ImageDetectorIA() {
     }
   };
 
-  const handleUpload = async () => {
+   async function handleUpload() {
     if (!selectedFile) return;
 
-    const formData = new FormData();
-    formData.append("file", selectedFile);
+    navigate("/loading-result");
 
     try {
-      const response = await fetch("/api/upload-image", {
-        method: "POST",
-        body: formData,
-      });
+      await analyzeImage(selectedFile);
+      navigate("/result-analysis");
 
-      if (!response.ok) throw new Error("Falha no upload");
-
-      alert("Imagem enviada com sucesso!");
-      // Limpa após upload
+      // Limpa após análise
       setSelectedFile(null);
       setPreviewUrl(null);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert("Erro ao enviar a imagem");
+      alert(err.message || "Erro ao analisar a imagem");
     }
-  };
+  }
 
   // Remove a imagem selecionada
   const handleRemoveImage = () => {
