@@ -21,7 +21,7 @@ export function TabPick() {
   return (
     <div className="p-4 space-y-6">
       {/* Tabs */}
-      <ul className="flex max-sm:flex-col gap-x-2 gap-y-4 w-max rounded-lg">
+      <ul className="flex max-sm:flex-col gap-x-2 gap-y-4 w-max rounded-lg mx-auto">
          {/* Texto */}
         <li
           onClick={() => setActiveTab("text")}
