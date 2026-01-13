@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAnalysis } from "../../hooks/useAnalysis";
 import { EmptyResult } from "../../components/EmptyResult";
+import { ButtonBackAnalyse } from "../../components/ButtonBackAnalyse";
 
 export default function AIAnalysisPage() {
   const { state } = useAnalysis();
@@ -114,15 +115,7 @@ export default function AIAnalysisPage() {
           Análise realizada por <span className="font-medium">{result.provider}</span>
         </div>
 
-        {/* ---------- CTA ---------- */}
-        <div className="flex justify-center">
-          <button
-            onClick={() => navigate("/")}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition shadow-md cursor-pointer"
-          >
-            Nova análise
-          </button>
-        </div>
+        <ButtonBackAnalyse label="Nova análise" />
       </div>
     </div>
   );

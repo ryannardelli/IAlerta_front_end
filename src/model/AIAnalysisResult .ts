@@ -22,7 +22,6 @@ export type AIAnalysisResultWithProvider = AIAnalysisResult & {
   raw: [];
 };
 
-
 export type AnalysisAction =
   | { type: "START_ANALYSIS" }
   | { type: "SET_RESULT"; payload: AIAnalysisResultWithProvider }

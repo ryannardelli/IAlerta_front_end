@@ -43,23 +43,6 @@ export function AnalysisProvider({ children }: { children: React.ReactNode }) {
             sentences: [],
           },
         });
-
-
-      // dispatch({
-      //   type: "SET_RESULT",
-      //   payload: {
-      //     provider: "IA Detector",
-      //     raw: result, // array que vem da API
-      //     likelihood: result[0].label === "ai" ? "AI-generated" : "Human",
-      //     confidence: result[0].score,
-      //   }
-      // });
-
-
-      // dispatch({
-      //   type: "SET_RESULT",
-      //   payload: result,
-      // });
     } catch (error: any) {
       dispatch({
         type: "SET_ERROR",
