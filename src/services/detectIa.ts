@@ -1,4 +1,4 @@
-const API_URL = "/api/detect-ai";
+const API_URL = "/api/detect-ai-text";
 
 export async function detectAIContent(text: string) {
   try {
