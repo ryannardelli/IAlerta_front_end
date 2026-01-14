@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { Image as ImageIcon, Upload, XCircle } from "lucide-react";
 import { useAnalysis } from "../../hooks/useAnalysis";
 import { useNavigate } from "react-router";
+import { FormatAllowed } from "../FormatAllowed";
+import { ButtonStartAnalyse } from "../ButtonStartAnalyse";
 
 export function ImageDetectorIA() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -80,20 +82,11 @@ export function ImageDetectorIA() {
                 Selecionar imagem
               </button>
             ) : (
-              <button
-                title="Enviar imagem para análise"
-                aria-label="Enviar imagem para análise"
-                onClick={handleUpload}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-green-600 text-white font-semibold shadow-md hover:bg-green-700 active:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 transition duration-200 cursor-pointer"
-              >
-                Enviar
-              </button>
+              <ButtonStartAnalyse label="Enviar" title="Enviar imagem para análise" ariaLabel="Enviar imagem para análise" onClick={handleUpload} />
             )}
           </div>
 
-          <span className="block text-sm text-slate-500 dark:text-slate-500">
-            Formatos suportados: JPG, PNG, WEBP
-          </span>
+         <FormatAllowed label="Formatos suportados: JPG, PNG, WEBP" />
 
           <input
             ref={inputRef}
