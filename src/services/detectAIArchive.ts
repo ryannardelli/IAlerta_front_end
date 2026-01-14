@@ -1,9 +1,9 @@
-const API_URL = "/api/detect-ai-image";
+const API_URL = "/api/detect-ai-archive";
 
-export async function detectAIImage(file: File) {
+export async function detectAIArchive(file: File) {
   try {
     const formData = new FormData();
-    formData.append("image", file);
+    formData.append("file", file);
 
     const response = await fetch(API_URL, {
       method: "POST",
@@ -12,14 +12,14 @@ export async function detectAIImage(file: File) {
 
     if (!response.ok) {
       const errData = await response.json();
-      console.error("Erro na API:", errData);
+      console.error("Erro na API de arquivo:", errData);
       throw new Error(errData.message || "Erro inesperado do backend");
     }
 
     const data = await response.json();
     return data;
   } catch (error: any) {
-    console.error("Erro no fetch de imagem:", error.message);
+    console.error("Erro no fetch de arquivo:", error.message);
     throw error;
   }
 }
