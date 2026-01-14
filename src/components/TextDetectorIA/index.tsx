@@ -62,7 +62,7 @@ export function TextDetectorIA() {
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-medium hover:opacity-90 transition disabled:opacity-50 cursor-pointer"
         >
           <ScanText className="w-5 h-5" />
-          {state.loading ? "Analisando..." : "Analisar texto"}
+          Analisar texto
         </button>
       </div>
     </section>

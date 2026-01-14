@@ -2,10 +2,14 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAnalysis } from "../../hooks/useAnalysis";
 import { EmptyResult } from "../../components/EmptyResult";
+import { ButtonBackAnalyse } from "../../components/ButtonBackAnalyse";
+import { labelPTBR } from "../../types/labelPTBR";
 
 export default function AIAnalysisPage() {
   const { state } = useAnalysis();
   const navigate = useNavigate();
+
+  console.log(state);
 
   const result = state.result;
 
@@ -20,76 +24,77 @@ export default function AIAnalysisPage() {
   }
 
   const isAI = result.likelihood === "AI-generated";
-  const confidencePercent = (result.confidence * 100).toFixed(1);
+  const confidencePercent = (result.confidence * 100).toFixed(1) ?? 0;
+
+  const rawItems = result.raw.flat ? result.raw.flat() : result.raw;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4">
+    <div className="min-h-screen from-gray-50 to-gray-100 flex items-center justify-center px-4">
       <div className="w-full max-w-3xl bg-white rounded-3xl shadow-2xl p-8 md:p-10">
 
-        {/* ---------- Header ---------- */}
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-gray-800">
             Resultado da Análise
           </h1>
-
           <p className="text-gray-500 mt-2">
             Detecção de autoria por Inteligência Artificial
           </p>
         </div>
 
         <div
-          className={`rounded-2xl p-6 mb-8 border ${
-            isAI
-              ? "bg-red-50 border-red-200"
-              : "bg-green-50 border-green-200"
-          }`}
-        >
-          <div className="flex flex-col items-center text-center">
-            <span
-              className={`text-sm font-semibold px-4 py-1 rounded-full mb-3 ${
-                isAI
-                  ? "bg-red-100 text-red-700"
-                  : "bg-green-100 text-green-700"
-              }`}
-            >
-              {isAI ? "Conteúdo gerado por IA" : "Conteúdo provavelmente humano"}
-            </span>
+            className={`rounded-2xl p-6 mb-8 border ${
+              isAI ? "bg-red-50 border-red-200" : "bg-green-50 border-green-200"
+            }`}
+          >
+            <div className="flex flex-col items-center text-center">
+              {!state.result?.confidence ? (
+                <>
+                  <span
+                  className={`text-sm font-semibold px-4 py-1 rounded-full mb-3 ${
+                    isAI ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
+                  }`}
+                >
+                  {isAI ? "Conteúdo gerado por IA" : "Conteúdo provavelmente humano"}
+                </span>
+                <p className="text-gray-500 mt-1 text-lg">
+                  Resultado fornecido pelo provedor: <strong>{result.provider}</strong>
+                </p>
+                </>
+              ) : (
+                <>
+                  <span
+                    className={`text-sm font-semibold px-4 py-1 rounded-full mb-3 ${
+                      isAI ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
+                    }`}
+                  >
+                    {isAI ? "Conteúdo gerado por IA" : "Conteúdo provavelmente humano"}
+                  </span>
 
-            <p className="text-5xl font-bold text-gray-800">
-              {confidencePercent}%
-            </p>
+                  <p className="text-5xl font-bold text-gray-800">
+                    {confidencePercent}%
+                  </p>
 
-            <p className="text-gray-500 mt-1">
-              Nível de confiança
-            </p>
+                  <p className="text-gray-500 mt-1">Nível de confiança</p>
+                </>
+              )}
+            </div>
           </div>
-        </div>
 
-        <div className="mb-10">
-          <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
-            <div
-              className={`h-4 transition-all ${
-                isAI ? "bg-red-500" : "bg-green-500"
-              }`}
-              style={{ width: `${confidencePercent}%` }}
-            />
-          </div>
-        </div>
-
-        {/* ---------- Breakdown ---------- */}
         <div className="mb-10">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">
             Distribuição de probabilidades
           </h2>
 
           <div className="space-y-4">
-            {result.raw.map((item, idx) => {
+            {rawItems.map((item, idx) => {
               const percent = (item.score * 100).toFixed(1);
+
+              const translatedLabel = labelPTBR[item.label] || item.label;
 
               return (
                 <div key={idx}>
                   <div className="flex justify-between text-sm text-gray-600 mb-1">
-                    <span>{item.label}</span>
+                    <span>{translatedLabel}</span>
                     <span>{percent}%</span>
                   </div>
 
@@ -109,20 +114,12 @@ export default function AIAnalysisPage() {
           </div>
         </div>
 
-        {/* ---------- Provider ---------- */}
         <div className="text-center text-sm text-gray-400 mb-10">
-          Análise realizada por <span className="font-medium">{result.provider}</span>
+          Análise realizada por{" "}
+          <span className="font-medium">{result.provider}</span>
         </div>
 
-        {/* ---------- CTA ---------- */}
-        <div className="flex justify-center">
-          <button
-            onClick={() => navigate("/")}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition shadow-md cursor-pointer"
-          >
-            Nova análise
-          </button>
-        </div>
+        <ButtonBackAnalyse label="Nova análise" />
       </div>
     </div>
   );

@@ -1,13 +1,13 @@
-const API_URL = "/api/detect-ai-text";
+const API_URL = "/api/detect-ai-image";
 
-export async function detectAIContent(text: string) {
+export async function detectAIImage(file: File) {
   try {
+    const formData = new FormData();
+    formData.append("image", file);
+
     const response = await fetch(API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ text }),
+      method: "POST",
+      body: formData,
     });
 
     if (!response.ok) {
@@ -17,10 +17,9 @@ export async function detectAIContent(text: string) {
     }
 
     const data = await response.json();
-    console.log(data);
     return data;
-  } catch (error) {
-    console.error("Erro no fetch:", error.message);
+  } catch (error: any) {
+    console.error("Erro no fetch de imagem:", error.message);
     throw error;
   }
 }

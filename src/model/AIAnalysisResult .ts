@@ -17,8 +17,13 @@ export type AnalysisState = {
   error: string | null;
 };
 
+export type AIAnalysisResultWithProvider = AIAnalysisResult & {
+  provider: string;
+  raw: [];
+};
+
 export type AnalysisAction =
   | { type: "START_ANALYSIS" }
-  | { type: "SET_RESULT"; payload: AIAnalysisResult }
+  | { type: "SET_RESULT"; payload: AIAnalysisResultWithProvider }
   | { type: "SET_ERROR"; payload: string }
   | { type: "RESET_ANALYSIS" };
