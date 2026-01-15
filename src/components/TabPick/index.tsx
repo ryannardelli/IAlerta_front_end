@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { FileText, Image, Mic, Type, Video } from "lucide-react";
+import { FileText, Image, Type } from "lucide-react";
 import { TextDetectorIA } from "../TextDetectorIA";
 import { ImageDetectorIA } from "../ImageDetectorIA";
 import { UploadArcchiveDetectorIA } from "../UploadArchiveDetectorIA";
-import { AudioDetectorIA } from "../AudioDetectorIA";
-import { VideoDetectorIA } from "../VideoDetectorIA";
 
 type TabType = "archive" | "text" | "image" | "audio" | "video";
 
@@ -56,28 +54,6 @@ export function TabPick() {
           <FileText className="w-5 h-5 mb-3" />
           Arquivo
         </li>
-
-        {/* Audio */}
-        <li
-          onClick={() => setActiveTab("audio")}
-          className={`${tabBase} ${
-            activeTab === "audio" ? tabActive : tabInactive
-          }`}
-        >
-          <Mic className="w-5 h-5 mb-3" />
-          Aúdio
-        </li>
-
-        {/* Vídeo */}
-        <li
-          onClick={() => setActiveTab("video")}
-          className={`${tabBase} ${
-            activeTab === "video" ? tabActive : tabInactive
-          }`}
-        >
-          <Video className="w-5 h-5 mb-3" />
-          Vídeo
-        </li>
       </ul>
 
       {/* Conteúdo */}
@@ -85,8 +61,6 @@ export function TabPick() {
         {activeTab === "archive" && <UploadArcchiveDetectorIA />}
         {activeTab === "text" && <TextDetectorIA />}
         {activeTab === "image" && <ImageDetectorIA />}
-        {activeTab === "audio" && <AudioDetectorIA />}
-        {activeTab === "video" && <VideoDetectorIA />}
       </div>
     </div>
   );
