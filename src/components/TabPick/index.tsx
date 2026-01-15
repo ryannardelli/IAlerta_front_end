@@ -4,6 +4,7 @@ import { TextDetectorIA } from "../TextDetectorIA";
 import { ImageDetectorIA } from "../ImageDetectorIA";
 import { UploadArcchiveDetectorIA } from "../UploadArchiveDetectorIA";
 import { AudioDetectorIA } from "../AudioDetectorIA";
+import { VideoDetectorIA } from "../VideoDetectorIA";
 
 type TabType = "archive" | "text" | "image" | "audio" | "video";
 
@@ -85,6 +86,7 @@ export function TabPick() {
         {activeTab === "text" && <TextDetectorIA />}
         {activeTab === "image" && <ImageDetectorIA />}
         {activeTab === "audio" && <AudioDetectorIA />}
+        {activeTab === "video" && <VideoDetectorIA />}
       </div>
     </div>
   );
