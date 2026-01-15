@@ -122,6 +122,7 @@ import { useState, useRef } from "react";
 import { Eye, Trash, Video, X } from "lucide-react";
 import { ButtonUploadPattern } from "../ButtonUploadPattern";
 import { ButtonStartAnalyse } from "../ButtonStartAnalyse";
+import { FormatAllowed } from "../FormatAllowed";
 
 export function VideoDetectorIA() {
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -206,6 +207,8 @@ export function VideoDetectorIA() {
             onChange={handleFileChange}
           />
         </div>
+
+         {!videoFile && <FormatAllowed label="Formatos suportados MP4, Webm e OGG" />}
 
         {/* Modal de vídeo */}
         {isModalOpen && videoFile && (
