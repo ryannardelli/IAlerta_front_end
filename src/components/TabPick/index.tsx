@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { FileText, Image, Type } from "lucide-react";
+import { FileText, Image, Mic, Type, Video } from "lucide-react";
 import { TextDetectorIA } from "../TextDetectorIA";
 import { ImageDetectorIA } from "../ImageDetectorIA";
 import { UploadArcchiveDetectorIA } from "../UploadArchiveDetectorIA";
+import { AudioDetectorIA } from "../AudioDetectorIA";
 
-type TabType = "archive" | "text" | "image";
+type TabType = "archive" | "text" | "image" | "audio" | "video";
 
 export function TabPick() {
   const [activeTab, setActiveTab] = useState<TabType>("text");
@@ -22,7 +23,7 @@ export function TabPick() {
     <div className="p-4 space-y-6">
       {/* Tabs */}
       <ul className="flex max-sm:flex-col gap-x-2 gap-y-4 w-max rounded-lg mx-auto">
-         {/* Texto */}
+         {/* Text */}
         <li
           onClick={() => setActiveTab("text")}
           className={`${tabBase} ${
@@ -33,7 +34,7 @@ export function TabPick() {
           Texto
         </li>
 
-        {/* Imagem */}
+        {/* Image */}
         <li
           onClick={() => setActiveTab("image")}
           className={`${tabBase} ${
@@ -44,7 +45,7 @@ export function TabPick() {
           Imagem
         </li>
 
-        {/* PDF */}
+        {/* Archive */}
         <li
           onClick={() => setActiveTab("archive")}
           className={`${tabBase} ${
@@ -54,6 +55,28 @@ export function TabPick() {
           <FileText className="w-5 h-5 mb-3" />
           Arquivo
         </li>
+
+        {/* Audio */}
+        <li
+          onClick={() => setActiveTab("audio")}
+          className={`${tabBase} ${
+            activeTab === "audio" ? tabActive : tabInactive
+          }`}
+        >
+          <Mic className="w-5 h-5 mb-3" />
+          Aúdio
+        </li>
+
+        {/* Vídeo */}
+        <li
+          onClick={() => setActiveTab("video")}
+          className={`${tabBase} ${
+            activeTab === "video" ? tabActive : tabInactive
+          }`}
+        >
+          <Video className="w-5 h-5 mb-3" />
+          Vídeo
+        </li>
       </ul>
 
       {/* Conteúdo */}
@@ -61,6 +84,7 @@ export function TabPick() {
         {activeTab === "archive" && <UploadArcchiveDetectorIA />}
         {activeTab === "text" && <TextDetectorIA />}
         {activeTab === "image" && <ImageDetectorIA />}
+        {activeTab === "audio" && <AudioDetectorIA />}
       </div>
     </div>
   );
