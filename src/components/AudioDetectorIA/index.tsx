@@ -136,7 +136,7 @@
 
 
 import { useState, useRef } from "react";
-import { Mic2, Play, Pause, Upload } from "lucide-react";
+import { Mic2, Play, Pause, Upload, X, XCircle } from "lucide-react";
 import { ButtonUploadPattern } from "../ButtonUploadPattern";
 import { FormatAllowed } from "../FormatAllowed";
 import { ButtonStartAnalyse } from "../ButtonStartAnalyse";
@@ -232,18 +232,27 @@ export function AudioDetectorIA() {
           />
 
           {audioFile && (
-            <div className="flex items-center gap-4 mt-4 bg-green-50 dark:bg-green-900/30 p-3 rounded-lg">
+            <div className="flex items-center gap-4 mt-4 bg-green-50 dark:bg-green-900/30 p-3 rounded-lg relative">
+              <button
+                onClick={() => setAudioFile(null)}
+                className="absolute -top-2 -right-1 text-white rounded-full bg-red-500 hover:bg-red-600 transition cursor-pointer"
+                title="Remover áudio"
+              >
+                <XCircle className="w-5 h-5" />
+              </button>
+
               <button
                 onClick={togglePlay}
-                className="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full flex items-center justify-center"
+                className="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full flex items-center justify-center cursor-pointer"
               >
                 {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
               </button>
 
+              {/* Barra de progresso */}
               <div className="flex-1">
                 <div className="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-green-500 rounded-full"
+                    className="h-full bg-green-500 rounded-full cursor-pointer"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
@@ -257,9 +266,7 @@ export function AudioDetectorIA() {
                 ref={audioRef}
                 src={audioFile}
                 onTimeUpdate={handleTimeUpdate}
-                onLoadedMetadata={() =>
-                  setProgress(0)
-                }
+                onLoadedMetadata={() => setProgress(0)}
                 onEnded={() => setIsPlaying(false)}
               />
             </div>
