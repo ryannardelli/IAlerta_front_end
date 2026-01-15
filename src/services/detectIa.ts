@@ -19,8 +19,10 @@ export async function detectAIContent(text: string) {
     const data = await response.json();
     console.log(data);
     return data;
-  } catch (error) {
-    console.error("Erro no fetch:", error.message);
-    throw error;
+  } catch (error: unknown) {
+    if(error instanceof Error) {
+      console.error("Erro no fetch:", error.message);
+      throw error;
+    }
   }
 }

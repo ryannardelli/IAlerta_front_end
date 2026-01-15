@@ -7,30 +7,36 @@ import { ButtonStartAnalyse } from "../ButtonStartAnalyse";
 import { ButtonUploadPattern } from "../ButtonUploadPattern";
 
 export function ImageDetectorIA() {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
-  const inputRef = useRef(null);
-  const { analyzeImage, state } = useAnalysis();
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const { analyzeImage } = useAnalysis();
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    inputRef.current.click();
+    inputRef.current?.click();
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+  const handleFileChange = (
+  event: React.ChangeEvent<HTMLInputElement>
+) => {
+  const file = event.target.files?.[0];
+  if (!file) return;
 
-    setSelectedFile(file);
+  setSelectedFile(file);
 
-    if (file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = (e) => setPreviewUrl(e.target.result);
-      reader.readAsDataURL(file);
-    } else {
-      setPreviewUrl(null);
-    }
-  };
+  if (file.type.startsWith("image/")) {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      setPreviewUrl(e.target?.result as string);
+    };
+
+    reader.readAsDataURL(file);
+  } else {
+    setPreviewUrl(null);
+  }
+};
 
    async function handleUpload() {
     if (!selectedFile) return;
@@ -44,13 +50,14 @@ export function ImageDetectorIA() {
       // Limpa após análise
       setSelectedFile(null);
       setPreviewUrl(null);
-    } catch (err: any) {
-      console.error(err);
-      alert(err.message || "Erro ao analisar a imagem");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err);
+        alert(err.message || "Erro ao analisar a imagem");
+      }
     }
   }
 
-  // Remove a imagem selecionada
   const handleRemoveImage = () => {
     setSelectedFile(null);
     setPreviewUrl(null);

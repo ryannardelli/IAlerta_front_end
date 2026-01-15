@@ -1,4 +1,7 @@
-import type { AnalysisAction, AnalysisState } from "../model/AIAnalysisResult ";
+import type {
+  AnalysisAction,
+  AnalysisState,
+} from "../models/AIAnalysisResult ";
 
 export const initialState: AnalysisState = {
   result: null,

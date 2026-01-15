@@ -18,11 +18,13 @@ export function AnalysisProvider({ children }: { children: React.ReactNode }) {
         type: "SET_RESULT",
         payload: result,
       });
-    } catch (error: any) {
-      dispatch({
+    } catch (error: unknown) {
+      if(error instanceof Error) {
+           dispatch({
         type: "SET_ERROR",
         payload: error.message ?? "Erro inesperado",
       });
+      }
     }
   }
 
@@ -44,11 +46,13 @@ export function AnalysisProvider({ children }: { children: React.ReactNode }) {
             sentences: [],
           },
         });
-    } catch (error: any) {
-      dispatch({
+    } catch (error: unknown) {
+      if(error instanceof Error) {
+        dispatch({
         type: "SET_ERROR",
         payload: error.message ?? "Erro inesperado",
       });
+      }
     }
   }
 
@@ -70,11 +74,13 @@ export function AnalysisProvider({ children }: { children: React.ReactNode }) {
           sentences: [],
         },
       });
-    } catch (error: any) {
-      dispatch({
+    } catch (error: unknown) {
+      if(error instanceof Error) {
+         dispatch({
         type: "SET_ERROR",
         payload: error.message ?? "Erro inesperado",
       });
+      }
     }
   }
 

@@ -6,6 +6,8 @@ export type SentenceAnalysis = {
 export type AIAnalysisResult = {
   likelihood: string;
   reasoning: string;
+  raw: [];
+  provider: string;
   confidence: number;
   patterns: string[];
   sentences: SentenceAnalysis[];
@@ -25,5 +27,5 @@ export type AIAnalysisResultWithProvider = AIAnalysisResult & {
 export type AnalysisAction =
   | { type: "START_ANALYSIS" }
   | { type: "SET_RESULT"; payload: AIAnalysisResultWithProvider }
-  | { type: "SET_ERROR"; payload: string }
+  | { type: "SET_ERROR"; payload: string | null }
   | { type: "RESET_ANALYSIS" };
