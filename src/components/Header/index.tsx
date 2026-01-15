@@ -16,7 +16,7 @@ export function Header() {
 
         {/* Menu Desktop */}
         <nav className="hidden lg:flex items-center gap-8">
-          {['Início', 'Detector', 'Como funciona', 'Sobre'].map(item => (
+          {['Início', 'Como funciona', 'Sobre'].map(item => (
             <a
               key={item}
               href="#"
