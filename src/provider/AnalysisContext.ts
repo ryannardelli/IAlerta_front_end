@@ -1,5 +1,8 @@
 import { createContext } from "react";
-import type { AnalysisAction, AnalysisState } from "../model/AIAnalysisResult ";
+import type {
+  AnalysisAction,
+  AnalysisState,
+} from "../models/AIAnalysisResult ";
 
 type AnalysisContextType = {
   state: AnalysisState;
@@ -10,4 +13,6 @@ type AnalysisContextType = {
   dispatch: React.Dispatch<AnalysisAction>;
 };
 
-export const AnalysisContext = createContext<AnalysisContextType | undefined>(undefined);
+export const AnalysisContext = createContext<AnalysisContextType | undefined>(
+  undefined
+);

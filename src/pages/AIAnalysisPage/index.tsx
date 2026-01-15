@@ -3,14 +3,13 @@ import { useNavigate } from "react-router";
 import { useAnalysis } from "../../hooks/useAnalysis";
 import { EmptyResult } from "../../components/EmptyResult";
 import { ButtonBackAnalyse } from "../../components/ButtonBackAnalyse";
-import { labelPTBR } from "../../types/labelPTBR";
+import { labelPTBR, type RawItem } from "../../types/labelPTBR";
 
 export default function AIAnalysisPage() {
   const { state } = useAnalysis();
   const navigate = useNavigate();
 
-  console.log(state);
-
+  const rawItems: RawItem[] = state.result?.raw ?? [];
   const result = state.result;
 
   useEffect(() => {
@@ -25,8 +24,6 @@ export default function AIAnalysisPage() {
 
   const isAI = result.likelihood === "AI-generated";
   const confidencePercent = (result.confidence * 100).toFixed(1) ?? 0;
-
-  const rawItems = result.raw.flat ? result.raw.flat() : result.raw;
 
   return (
     <div className="min-h-screen from-gray-50 to-gray-100 flex items-center justify-center px-4">
