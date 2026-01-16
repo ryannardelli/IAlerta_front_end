@@ -4,13 +4,13 @@ import { TextDetectorIA } from "../TextDetectorIA";
 import { ImageDetectorIA } from "../ImageDetectorIA";
 import { UploadArcchiveDetectorIA } from "../UploadArchiveDetectorIA";
 
-type TabType = "archive" | "text" | "image" | "audio" | "video";
+type TabType = "archive" | "text" | "image";
 
 export function TabPick() {
   const [activeTab, setActiveTab] = useState<TabType>("text");
 
   const tabBase =
-    "flex flex-col justify-center items-center border-2 rounded-lg bg-gray-100 text-sm py-4 px-4 min-w-[120px] cursor-pointer transition-all";
+    "flex flex-col justify-center items-center border-2 rounded-lg bg-gray-100 text-sm py-4 px-4 min-w-[100px] cursor-pointer transition-all";
 
   const tabActive =
     "border-blue-700 text-blue-700 font-semibold";
@@ -21,37 +21,31 @@ export function TabPick() {
   return (
     <div className="p-4 space-y-6">
       {/* Tabs */}
-      <ul className="flex max-sm:flex-col gap-x-2 gap-y-4 w-max rounded-lg mx-auto">
-         {/* Text */}
+      <ul className="flex flex-wrap sm:flex-nowrap gap-2 justify-center overflow-x-auto">
+        {/* Text */}
         <li
           onClick={() => setActiveTab("text")}
-          className={`${tabBase} ${
-            activeTab === "text" ? tabActive : tabInactive
-          }`}
+          className={`${tabBase} ${activeTab === "text" ? tabActive : tabInactive}`}
         >
-          <Type className="w-5 h-5 mb-3" />
+          <Type className="w-5 h-5 mb-2 sm:mb-3" />
           Texto
         </li>
 
         {/* Image */}
         <li
           onClick={() => setActiveTab("image")}
-          className={`${tabBase} ${
-            activeTab === "image" ? tabActive : tabInactive
-          }`}
+          className={`${tabBase} ${activeTab === "image" ? tabActive : tabInactive}`}
         >
-          <Image className="w-5 h-5 mb-3" />
+          <Image className="w-5 h-5 mb-2 sm:mb-3" />
           Imagem
         </li>
 
         {/* Archive */}
         <li
           onClick={() => setActiveTab("archive")}
-          className={`${tabBase} ${
-            activeTab === "archive" ? tabActive : tabInactive
-          }`}
+          className={`${tabBase} ${activeTab === "archive" ? tabActive : tabInactive}`}
         >
-          <FileText className="w-5 h-5 mb-3" />
+          <FileText className="w-5 h-5 mb-2 sm:mb-3" />
           Arquivo
         </li>
       </ul>
