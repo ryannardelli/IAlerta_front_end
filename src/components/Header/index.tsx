@@ -1,7 +1,15 @@
+import { useLocation } from 'react-router';
 import logo from '../../../public/img/logo.png';
 import { RouterLink } from '../RouterLink';
 
 export function Header() {
+  const location = useLocation();
+
+  const isActive = (path: string) => location.pathname === path;
+
+  const baseClass =
+    "text-sm font-medium transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-assets after:transition-all after:duration-300";
+
   return (
     <header className="top-0 w-full z-50 bg-primary backdrop-blur-md border-b border-secondary">
       <div className="flex items-center justify-between px-6 lg:px-8 h-16 max-w-7xl mx-auto">
@@ -19,39 +27,37 @@ export function Header() {
         <nav className="hidden lg:flex items-center gap-8">
           <RouterLink
             href="/"
-            className="text-sm font-medium text-slate-300 hover:text-assets transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-assets after:transition-all after:duration-300 hover:after:w-full"
+            className={`${baseClass} ${
+              isActive('/')
+                ? 'text-assets after:w-full'
+                : 'text-slate-300 hover:text-assets after:w-0 hover:after:w-full'
+            }`}
           >
             Início
           </RouterLink>
 
           <RouterLink
             href="/how-work"
-            className="text-sm font-medium text-slate-300 hover:text-assets transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-assets after:transition-all after:duration-300 hover:after:w-full"
+            className={`${baseClass} ${
+              isActive('/how-work')
+                ? 'text-assets after:w-full'
+                : 'text-slate-300 hover:text-assets after:w-0 hover:after:w-full'
+            }`}
           >
             Como funciona
           </RouterLink>
 
           <RouterLink
             href="/about"
-            className="text-sm font-medium text-slate-300 hover:text-assets transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-assets after:transition-all after:duration-300 hover:after:w-full"
+            className={`${baseClass} ${
+              isActive('/about')
+                ? 'text-assets after:w-full'
+                : 'text-slate-300 hover:text-assets after:w-0 hover:after:w-full'
+            }`}
           >
             Sobre
           </RouterLink>
         </nav>
-
-        {/* Botão Mobile */}
-        <button className="lg:hidden text-assets hover:text-primary transition-colors">
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-
       </div>
     </header>
   );
