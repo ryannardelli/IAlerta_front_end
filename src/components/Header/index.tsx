@@ -1,4 +1,5 @@
 import logo from '../../../public/img/logo.png';
+import { RouterLink } from '../RouterLink';
 
 export function Header() {
   return (
@@ -6,32 +7,36 @@ export function Header() {
       <div className="flex items-center justify-between px-6 lg:px-8 h-16 max-w-7xl mx-auto">
 
         {/* Logo */}
-        <div className="flex items-center">
+        <RouterLink href="/">
           <img
             src={logo}
             alt="Logo IAlerta"
             className="w-32 p-4 object-contain transition-transform duration-300 hover:scale-105 cursor-pointer"
           />
-        </div>
+        </RouterLink>
 
         {/* Menu Desktop */}
         <nav className="hidden lg:flex items-center gap-8">
-          {['Início', 'Como funciona', 'Sobre'].map(item => (
-            <a
-              key={item}
-              href="#"
-              className="
-                text-sm font-medium text-slate-300
-                hover:text-assets transition-colors
-                relative after:absolute after:-bottom-1 after:left-0
-                after:h-[2px] after:w-0 after:bg-primary
-                after:transition-all after:duration-300
-                hover:after:w-full
-              "
-            >
-              {item}
-            </a>
-          ))}
+          <RouterLink
+            href="/"
+            className="text-sm font-medium text-slate-300 hover:text-assets transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-assets after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Início
+          </RouterLink>
+
+          <RouterLink
+            href="/how-work"
+            className="text-sm font-medium text-slate-300 hover:text-assets transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-assets after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Como funciona
+          </RouterLink>
+
+          <RouterLink
+            href="/about"
+            className="text-sm font-medium text-slate-300 hover:text-assets transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-assets after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Sobre
+          </RouterLink>
         </nav>
 
         {/* Botão Mobile */}
