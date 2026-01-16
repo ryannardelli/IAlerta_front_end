@@ -6,7 +6,7 @@ export type SentenceAnalysis = {
 export type AIAnalysisResult = {
   likelihood: string;
   reasoning: string;
-  raw: [];
+  raw?: [];
   provider: string;
   confidence: number;
   patterns: string[];
@@ -14,7 +14,7 @@ export type AIAnalysisResult = {
 };
 
 export type AnalysisState = {
-  result: AIAnalysisResult | null;
+  result?: AIAnalysisResult | null;
   loading: boolean;
   error: string | null;
 };
