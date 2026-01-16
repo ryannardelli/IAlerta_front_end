@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
-import type { FAQ } from "../../types/labelPTBR";
+import type { FAQ } from "../../types/faq";
 
 const faqs: FAQ[] = [
   {
@@ -51,7 +51,7 @@ export function FaqSection() {
           resultados da detecção de conteúdo gerado por IA.
         </p>
       </div>
-      
+
         {/* Lista de FAQ */}
         <div className="space-y-4">
           {faqs.map((faq, index) => {
