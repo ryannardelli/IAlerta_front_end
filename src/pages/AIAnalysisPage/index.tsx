@@ -9,6 +9,8 @@ export default function AIAnalysisPage() {
   const { state } = useAnalysis();
   const navigate = useNavigate();
 
+  console.log(state);
+
   const rawItems: RawItem[] = state.result?.raw ?? [];
   const result = state.result;
 
@@ -22,7 +24,10 @@ export default function AIAnalysisPage() {
     return <EmptyResult />;
   }
 
-  const isAI = result.likelihood === "AI-generated";
+    const isAI =
+    result.likelihood === "AI-generated" ||
+    result.likelihood === "AI";
+
   const confidencePercent = (result.confidence * 100).toFixed(1) ?? 0;
 
   return (
