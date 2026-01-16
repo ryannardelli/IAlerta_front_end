@@ -138,9 +138,11 @@ export default function AIAnalysisPage() {
   const { state } = useAnalysis();
   const navigate = useNavigate();
 
+  console.log(state);
+
   const result = state.result;
 
-  const rawItems: RawItem[] = (state.result?.raw as any)?.flat(Infinity) ?? [];
+  const rawItems: RawItem[] = (state.result?.raw)?.flat(Infinity) ?? [];
 
   useEffect(() => {
     if (!result) {
@@ -224,8 +226,11 @@ export default function AIAnalysisPage() {
 
               const translatedLabel = labelPTBR[item.label] || item.label;
 
-              const isAIItem = item.label.toLowerCase().includes("ai") ||
-                 item.label.toLowerCase().includes("fake");
+              const isAIItem =
+              item.label?.toLowerCase().includes("ai") ||
+              item.label?.toLowerCase().includes("fake") ||
+              false;
+
 
               return (
                 <div key={idx}>
