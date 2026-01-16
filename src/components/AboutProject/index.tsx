@@ -17,7 +17,7 @@ export function AboutProject() {
           </h2>
 
           <p className="mt-6 text-lg text-slate-600">
-            O IAlerta analisa textos e documentos para identificar indícios de
+            O IAlerta analisa textos, imagens e documentos para identificar indícios de
             conteúdo gerado por Inteligência Artificial, ajudando você a tomar
             decisões mais seguras, rápidas e informadas.
           </p>
