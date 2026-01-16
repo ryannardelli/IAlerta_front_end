@@ -8,10 +8,12 @@ export function normalizeLabel(label: string): NormalizedLabel {
 export const labelPTBR: Record<string, string> = {
   "AI-generated": "Gerado por IA",
   "Human-written": "Escrito por humano",
-  "ai": "Gerado por IA",
-  "hum": "Escrito por humano",
   "AI": "Gerado por IA",
   "HUMAN": "Humano",
+  "Real": "Humano",
+  "Fake": "IA",
+  "ai": "IA",
+  "hum": "Humano"
 };
 
 export type RawItem = {
