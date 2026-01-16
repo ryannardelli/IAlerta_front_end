@@ -5,28 +5,12 @@ const faqs = [
   {
     question: "O que é o IAlerta e como ele funciona?",
     answer:
-      "O IAlerta é uma plataforma que analisa textos e documentos para identificar possíveis indícios de conteúdo gerado por Inteligência Artificial. Basta enviar o texto ou arquivo, e nosso sistema realiza a análise automaticamente, retornando um resultado claro e objetivo.",
+      "O IAlerta é uma plataforma que analisa textos, imagens e documentos para identificar possíveis indícios de conteúdo gerado por Inteligência Artificial. Basta enviar o texto ou arquivo, e nosso sistema realiza a análise automaticamente, retornando um resultado claro e objetivo.",
   },
   {
     question: "Quais tipos de conteúdo posso analisar no IAlerta?",
     answer:
-      "Você pode analisar textos digitados diretamente na plataforma e documentos enviados em formato de arquivo. O IAlerta extrai o conteúdo, normaliza o texto e aplica modelos de detecção de IA para gerar o resultado.",
-  },
-  {
-    question: "Existe limite de uso mensal?",
-    answer:
-      "Sim. Cada plano possui um limite mensal de análises para garantir a estabilidade e a qualidade do serviço. Esse limite considera tanto textos quanto arquivos enviados para verificação.",
-  },
-  {
-    question: "O que acontece se eu ultrapassar o limite mensal?",
-    answer:
-      "Caso o limite mensal seja ultrapassado, algumas análises podem ficar temporariamente indisponíveis. Nossa equipe entrará em contato para apresentar opções de upgrade ou um plano personalizado.",
-    defaultOpen: true,
-  },
-  {
-    question: "O IAlerta cobra por usuário?",
-    answer:
-      "Não. O IAlerta não cobra por usuário. Você pode utilizar a plataforma com sua equipe sem custos adicionais, pagando apenas pelo plano contratado.",
+      "Você pode analisar textos digitados diretamente na plataforma, imagens e documentos enviados em formato de arquivo. O IAlerta extrai o conteúdo, normaliza o texto e aplica modelos de detecção de IA para gerar o resultado.",
   },
   {
     question: "O resultado da análise é 100% preciso?",
@@ -34,19 +18,9 @@ const faqs = [
       "O IAlerta utiliza modelos avançados de detecção de IA, mas nenhum sistema é 100% preciso. Os resultados devem ser utilizados como apoio à decisão, e não como prova absoluta.",
   },
   {
-    question: "O IAlerta pode ser integrado a outros sistemas?",
-    answer:
-      "Sim. O IAlerta pode ser integrado via API a outros sistemas, plataformas ou fluxos internos, permitindo análises automáticas diretamente no seu ambiente.",
-  },
-  {
     question: "Meus dados e documentos estão seguros?",
     answer:
       "Sim. A segurança e a privacidade dos dados são prioridades no IAlerta. Os textos e documentos enviados são processados de forma segura e não são utilizados para outros fins.",
-  },
-  {
-    question: "Tenho outra dúvida. Como posso entrar em contato?",
-    answer:
-      "Você pode entrar em contato conosco através do formulário do site, chat ou e-mail de suporte. Nossa equipe está pronta para ajudar.",
   },
 ];
 
