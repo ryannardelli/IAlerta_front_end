@@ -37,9 +37,11 @@ export function UploadArcchiveDetectorIA() {
 
       // Limpa após análise
       setSelectedFile(null);
-    } catch (err: any) {
-      console.error(err);
-      alert(err.message || "Erro ao analisar o arquivo");
+    } catch (err: unknown) {
+      if(err instanceof Error) {
+        console.error(err);
+        alert(err.message || "Erro ao analisar o arquivo");
+      }
     }
   };
 

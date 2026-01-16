@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
+import type { FAQ } from "../../types/labelPTBR";
 
-const faqs = [
+const faqs: FAQ[] = [
   {
     question: "O que é o IAlerta e como ele funciona?",
     answer:
@@ -25,13 +26,12 @@ const faqs = [
 ];
 
 export function FaqSection() {
-  const [openIndex, setOpenIndex] = useState(
-    faqs.findIndex((faq) => faq.defaultOpen)
-  );
 
-  function toggle(index) {
-    setOpenIndex(openIndex === index ? null : index);
-  }
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  function toggle(index: number) {
+  setOpenIndex(openIndex === index ? null : index);
+}
 
   return (
     <section className="bg-white py-20 px-4">
@@ -51,8 +51,7 @@ export function FaqSection() {
           resultados da detecção de conteúdo gerado por IA.
         </p>
       </div>
-
-
+      
         {/* Lista de FAQ */}
         <div className="space-y-4">
           {faqs.map((faq, index) => {

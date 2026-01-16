@@ -1,5 +1,6 @@
 import { ShieldCheck, FileSearch, Cpu, Lock } from "lucide-react";
 import { RouterLink } from "../RouterLink";
+import { FeatureCard } from "../FeatureCard";
 
 export function AboutProject() {
   return (
@@ -25,25 +26,25 @@ export function AboutProject() {
         {/* Features */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <FeatureCard
-            icon={<FileSearch />}
+            icon={FileSearch}
             title="Análise de Textos e Arquivos"
             description="Envie textos ou documentos e receba uma análise automática baseada em modelos avançados de detecção de IA."
           />
 
           <FeatureCard
-            icon={<Cpu />}
+            icon={Cpu}
             title="Tecnologia Inteligente"
             description="Foram utilizados algoritmos modernos para avaliar padrões linguísticos e probabilidades de geração por IA."
           />
 
           <FeatureCard
-            icon={<ShieldCheck />}
+            icon={ShieldCheck}
             title="Apoio à Tomada de Decisão"
             description="Os resultados auxiliam na verificação de autenticidade, sem substituir a análise humana."
           />
 
           <FeatureCard
-            icon={<Lock />}
+            icon={Lock}
             title="Segurança e Privacidade"
             description="Seus dados são processados com segurança e não são utilizados para outros fins."
           />
@@ -71,23 +72,5 @@ export function AboutProject() {
         </div>
       </div>
     </section>
-  );
-}
-
-function FeatureCard({ icon, title, description }) {
-  return (
-    <div className="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition">
-        {icon}
-      </div>
-
-      <h4 className="text-lg font-semibold text-slate-900 mb-2">
-        {title}
-      </h4>
-
-      <p className="text-slate-600 text-sm leading-relaxed">
-        {description}
-      </p>
-    </div>
   );
 }
