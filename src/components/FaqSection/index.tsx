@@ -64,7 +64,7 @@ export function FaqSection() {
       <div className="max-w-3xl mx-auto">
         {/* Cabeçalho */}
         <div className="text-center mb-16">
-        <h2 className="text-sm font-semibold text-secondary tracking-wide uppercase mb-3">
+        <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-3">
           Dúvidas frequentes
         </h2>
 
