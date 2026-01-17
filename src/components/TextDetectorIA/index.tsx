@@ -19,16 +19,16 @@ export function TextDetectorIA() {
   }
 
   return (
-    <section className="w-full max-w-4xl mx-auto p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm mt-4">
+    <section className="w-full max-w-4xl mx-auto p-8 bg-white rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm mt-4">
       <div className="flex-1 space-y-4">
         <div className="flex items-center gap-3">
           <Sparkles className="w-6 h-6 text-primary" />
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+          <h2 className="text-2xl font-bold text-slate-900">
             Detectar IA em Texto
           </h2>
         </div>
 
-        <p className="text-slate-600 dark:text-slate-400 max-w-md">
+        <p className="text-slate-600 max-w-md">
           Cole ou digite o texto abaixo para analisar se ele foi gerado por inteligência artificial.
         </p>
 
@@ -39,7 +39,7 @@ export function TextDetectorIA() {
             placeholder="Cole aqui o texto que deseja analisar..."
             rows={8}
             maxLength={MAX_CHARACTERS}
-            className="w-full resize-none rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full resize-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary"
           />
 
           {/* CONTADOR */}

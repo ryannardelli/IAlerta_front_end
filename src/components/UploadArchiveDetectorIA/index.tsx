@@ -46,7 +46,7 @@ export function UploadArcchiveDetectorIA() {
   };
 
   return (
-    <section className="w-full max-w-4xl mx-auto p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm mt-4">
+    <section className="w-full max-w-4xl mx-auto p-8 bg-white rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm mt-4">
       <div className="flex flex-col md:flex-row items-center justify-between gap-10">
         <div className="flex-1 space-y-4">
           <div className="flex items-center gap-3">
