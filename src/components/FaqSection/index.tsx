@@ -6,7 +6,7 @@ const faqs: FAQ[] = [
   {
     question: "O que é o IAlerta e como ele funciona?",
     answer:
-      "O IAlerta é uma plataforma que analisa textos, imagens e documentos para identificar possíveis indícios de conteúdo gerado por Inteligência Artificial. Basta enviar o texto ou arquivo, e nosso sistema realiza a análise automaticamente, retornando um resultado claro e objetivo.",
+      "O IAlerta é uma plataforma que analisa textos, imagens e documentos para identificar possíveis indícios de conteúdo gerado por Inteligência Artificial. Basta enviar o texto ou arquivo, e o sistema realiza a análise automaticamente, retornando um resultado claro e objetivo.",
   },
   {
     question: "Quais tipos de conteúdo posso analisar no IAlerta?",
