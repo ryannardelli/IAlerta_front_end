@@ -1,7 +1,11 @@
 
-# IAlerta - Front-end
+# iAlerta – Front-end
 
-IAlerta is a modern front-end application focused on detecting AI-generated content, allowing analysis of texts, images, PDFs, links, and other formats, with an emphasis on digital security, authenticity, and fraud prevention.
+## Overview
+
+This repository contains the front-end of iAlerta, a web application designed to detect AI-generated content in texts, images and files.
+
+The front-end focuses on performance, strong typing and maintainability, providing a clear user experience and reliable communication with the back-end API.
 
 The project is built with React + Vite + TypeScript, using TailwindCSS to deliver a clean, responsive, and scalable user interface, ready to integrate with multiple AI detection APIs.
 
@@ -20,52 +24,35 @@ The project is built with React + Vite + TypeScript, using TailwindCSS to delive
 - Enable easy integration with external AI detection APIs
 - Serve as a scalable base for future features (dashboard, history, reports, etc.)
 
+## Best Practices
 
-## Project Structure
+- Component-based architecture
+- Strong typing with TypeScript
+- Clear separation between business logic and UI
+- Error handling and loading states
+- Consistent styling with Tailwind CSS
+
+## Project Architecture
   ```bash
 📁 src/
- ┣ 📁 components/      → Reusable components
+ ┣ 📁 components/      → Reusable UI components
  ┣ 📁 pages/           → Application pages / screens
- ┣ 📁 hooks/           → Custom hooks
+ ┣ 📁 adapters/        → Data adapters between layers
+ ┣ 📁 hooks/           → Custom React hooks
  ┣ 📁 services/        → Services (APIs, Axios, configs)
  ┣ 📁 providers/       → Global Context Providers
  ┣ 📁 reducers/        → Context API reducers
- ┣ 📁 models/          → Global types and interfaces
- ┣ 📁 adapters/        → Data adapters between layers
+ ┣ 📁 types/           → Global types (DTOs, interfaces, enums)
+ ┣ 📁 models/          → Domain models
  ┣ 📁 router/          → Routing configuration (React Router)
  ┣ 📁 templates/       → Base UI layouts
  ┣ 📁 utils/           → Utility functions and helpers
  ┣ main.tsx            → Application entry point
  ┗ App.tsx             → Main app configuration
-   ```
+```
 
 ## Commit Convention (Conventional Commits)
 This project follows the Conventional Commits standard to keep a clean history, automate changelogs, and simplify releases.
-
-### Supported Commit Types
-- feat: new feature
-- fix: bug fix
-- docs: documentation changes
-- style: formatting or style changes (no logic changes)
-- refactor: code refactoring without behavior changes
-- perf: performance improvements
-- test: adding or updating tests
-- chore: maintenance tasks, scripts, dependencies
-- ci: continuous integration configuration
-
-### Issue References
-#### Automatically close an issue:
-  ```bash
-closes #12
-   ```
-#### Resolve an issue:
-  ```bash
-resolves #87
-   ```
-#### Reference multiple issues:
-  ```bash
-fixes #3 #5 closes #9
-   ```
 
 ## Getting Started
 ### 1. Clone the repository
@@ -86,7 +73,6 @@ npm install
   ```bash
 npm run dev
    ```
-
 #### The application will be available at:
 
 http://localhost:5173
