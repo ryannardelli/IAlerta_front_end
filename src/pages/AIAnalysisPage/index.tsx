@@ -137,9 +137,7 @@ import { labelPTBR, type RawItem } from "../../types/labelPTBR";
 export default function AIAnalysisPage() {
   const { state } = useAnalysis();
   const navigate = useNavigate();
-
-  console.log(state);
-
+  
   const result = state.result;
 
   const rawItems: RawItem[] = (state.result?.raw)?.flat(Infinity) ?? [];
