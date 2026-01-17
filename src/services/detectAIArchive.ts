@@ -18,8 +18,10 @@ export async function detectAIArchive(file: File) {
 
     const data = await response.json();
     return data;
-  } catch (error: any) {
-    console.error("Erro no fetch de arquivo:", error.message);
-    throw error;
+  } catch (error: unknown) {
+    if(error instanceof Error) {
+      console.error("Erro no fetch de arquivo:", error.message);
+      throw error;
+    }
   }
 }

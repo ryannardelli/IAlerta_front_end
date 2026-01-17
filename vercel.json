@@ -1,12 +1,11 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/:path*",
-      "destination": "https://ialerta-backend-712712177590.us-central1.run.app/:path*"
+      "handle": "filesystem"
     },
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "src": "/api/(.*)",
+      "dest": "https://ialerta-backend-712712177590.us-central1.run.app/$1"
     }
   ]
 }
