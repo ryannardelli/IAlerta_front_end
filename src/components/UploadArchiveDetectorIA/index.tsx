@@ -51,7 +51,7 @@ export function UploadArcchiveDetectorIA() {
         <div className="flex-1 space-y-4 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-3">
             <Upload className="w-6 h-6 text-primary" />
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
               Detectar IA em Arquivo
             </h2>
           </div>
