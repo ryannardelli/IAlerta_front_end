@@ -51,9 +51,6 @@ The project is built with React + Vite + TypeScript, using TailwindCSS to delive
  ┗ App.tsx             → Main app configuration
 ```
 
-## Commit Convention (Conventional Commits)
-This project follows the Conventional Commits standard to keep a clean history, automate changelogs, and simplify releases.
-
 ## Getting Started
 ### 1. Clone the repository
   ```bash
