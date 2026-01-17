@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://ialerta-backend-712712177590.us-central1.run.app',
         changeOrigin: true,
       },
     },
