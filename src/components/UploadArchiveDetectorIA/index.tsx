@@ -85,7 +85,7 @@ export function UploadArcchiveDetectorIA() {
           )}
 
           {selectedFile && (
-            <div className="mt-3 flex flex-wrap items-center justify-center md:justify-start gap-2">
+            <div className="mt-3 flex items-center justify-center md:justify-start gap-2">
               <div className="flex items-center gap-2 px-3 py-1 max-w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200">
                 <FileText className="w-4 h-4 text-gray-600 dark:text-gray-400 shrink-0" />
                 <span className="font-medium text-sm break-all">
@@ -98,7 +98,7 @@ export function UploadArcchiveDetectorIA() {
                 onClick={handleRemoveFile}
                 title="Remover arquivo"
                 aria-label="Remover arquivo"
-                className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-500 text-white hover:bg-red-600 transition"
+                className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-500 text-white hover:bg-red-600 transition cursor-pointer"
               >
                 <XCircle className="w-4 h-4" />
               </button>

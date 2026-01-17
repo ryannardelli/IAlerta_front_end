@@ -53,6 +53,10 @@ export function ImageDetectorIA() {
   const handleRemoveImage = () => {
     setSelectedFile(null);
     setPreviewUrl(null);
+
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
   };
 
   return (
@@ -119,7 +123,7 @@ export function ImageDetectorIA() {
                   title="Remover imagem"
                   aria-label="Remover imagem"
                   onClick={handleRemoveImage}
-                  className="absolute top-2 right-2 bg-white/80 hover:bg-white text-red-600 rounded-full p-1 shadow-md transition"
+                  className="absolute top-2 right-2 bg-white/80 hover:bg-white text-red-600 rounded-full p-1 shadow-md transition cursor-pointer"
                 >
                   <XCircle className="w-6 h-6" />
                 </button>
