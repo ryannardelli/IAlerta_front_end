@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://ialerta-backend-712712177590.us-central1.run.app',
+        target: 'https://ialerta-back-end.onrender.com',
         changeOrigin: true,
       },
     },

@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://ialerta-backend-712712177590.us-central1.run.app/api/:path*"
+      "destination": "https://ialerta-back-end.onrender.com/api/:path*"
     },
     {
       "source": "/(.*)",
